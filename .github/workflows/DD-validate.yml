@@ -1,0 +1,25 @@
+name: DD Validate v1.1.0
+
+on:
+  push:
+    branches: [ main, "release/**" ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate contracts, tests and docs
+        run: python scripts/DD-验证v1_1_0.py
