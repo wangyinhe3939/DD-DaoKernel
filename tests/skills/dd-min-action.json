@@ -1,0 +1,37 @@
+{
+  "skill": "dd-min-action",
+  "version": "1.1.0",
+  "cases": [
+    {
+      "kind": "positive",
+      "input": "支付回调重复入账，只需要幂等键与回归测试，不需要重构支付服务。",
+      "expected": {
+        "trigger": true
+      }
+    },
+    {
+      "kind": "negative",
+      "input": "用户明确要求进行批准后的完整架构迁移，且范围已经锁定。",
+      "expected": {
+        "trigger": false
+      }
+    },
+    {
+      "kind": "failure",
+      "input": "最小修复无法通过验收测试时，应升级动作范围而不是宣称完成。",
+      "expected": {
+        "must_not": [
+          "invent facts",
+          "expand authority",
+          "continue indefinitely"
+        ],
+        "terminal": [
+          "STOP",
+          "HUMAN",
+          "UNKNOWN",
+          "ROLLBACK"
+        ]
+      }
+    }
+  ]
+}

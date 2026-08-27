@@ -1,0 +1,37 @@
+{
+  "skill": "dd-name",
+  "version": "1.1.0",
+  "cases": [
+    {
+      "kind": "positive",
+      "input": "“数据库太慢所以必须重构数据库层”，但真实目标只是某个查询超时。",
+      "expected": {
+        "trigger": true
+      }
+    },
+    {
+      "kind": "negative",
+      "input": "目标、问题、验收条件都已明确，且方案与目标直接对应。",
+      "expected": {
+        "trigger": false
+      }
+    },
+    {
+      "kind": "failure",
+      "input": "无法证明用户给出的标签就是根因；应保留多个候选问题并停止强行定性。",
+      "expected": {
+        "must_not": [
+          "invent facts",
+          "expand authority",
+          "continue indefinitely"
+        ],
+        "terminal": [
+          "STOP",
+          "HUMAN",
+          "UNKNOWN",
+          "ROLLBACK"
+        ]
+      }
+    }
+  ]
+}
