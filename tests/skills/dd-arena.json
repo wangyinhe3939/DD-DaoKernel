@@ -1,0 +1,37 @@
+{
+  "skill": "dd-arena",
+  "version": "1.1.0",
+  "cases": [
+    {
+      "kind": "positive",
+      "input": "团队持续优化一个低转化入口，但已有更低成本高转化入口可复用。",
+      "expected": {
+        "trigger": true
+      }
+    },
+    {
+      "kind": "negative",
+      "input": "现有路径已验证有效，只需修复一个局部缺陷。",
+      "expected": {
+        "trigger": false
+      }
+    },
+    {
+      "kind": "failure",
+      "input": "没有足够数据证明替代路径更好时，不应直接 DELETE PATH。",
+      "expected": {
+        "must_not": [
+          "invent facts",
+          "expand authority",
+          "continue indefinitely"
+        ],
+        "terminal": [
+          "STOP",
+          "HUMAN",
+          "UNKNOWN",
+          "ROLLBACK"
+        ]
+      }
+    }
+  ]
+}

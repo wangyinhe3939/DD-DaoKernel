@@ -1,0 +1,61 @@
+{
+  "trace_version": "1.1.0",
+  "task_id": "demo-payment-idempotency-001",
+  "classification": {
+    "type": "Workflow",
+    "kernel": "DD-DaoKernel",
+    "risk": "MEDIUM"
+  },
+  "input": {
+    "request": "支付回调偶尔重复入账，请修复。",
+    "acceptance": "同一业务回调重复到达时只入账一次。"
+  },
+  "evidence": {
+    "verified": [
+      "重复回调可重现",
+      "当前入账路径没有业务幂等键"
+    ],
+    "assumption": [],
+    "unknown": [
+      "历史重复入账是否需要数据修复"
+    ]
+  },
+  "decision": {
+    "skills": [
+      "dd-evidence",
+      "dd-min-action",
+      "dd-stop"
+    ],
+    "current_not_do": [
+      "重构 repository",
+      "升级依赖",
+      "重写支付服务"
+    ],
+    "reason": "局部幂等缺失可用最小可逆补丁解决"
+  },
+  "action": {
+    "writer": "DD-行水执行",
+    "permissions": [
+      "modify payment callback module",
+      "add regression test"
+    ],
+    "patch": "增加业务幂等键 + 重复回调回归测试"
+  },
+  "verification": {
+    "tests": [
+      "首次回调入账一次",
+      "同一幂等键再次回调不新增入账"
+    ],
+    "result": "PASS"
+  },
+  "boundary": {
+    "blast_radius": "payment callback module only",
+    "rollback": "revert patch",
+    "human_gate": "历史数据修复属于独立 HIGHER-RISK 任务，不在本次自动执行"
+  },
+  "stop": {
+    "condition": "acceptance tests PASS",
+    "result": "STOP",
+    "reason": "继续重构的边际收益低于范围漂移与回归风险"
+  }
+}

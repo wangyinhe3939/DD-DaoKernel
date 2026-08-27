@@ -1,0 +1,37 @@
+{
+  "skill": "dd-desire",
+  "version": "1.1.0",
+  "cases": [
+    {
+      "kind": "positive",
+      "input": "用户因为已经投入三周，要求继续建设没人使用的复杂自动化。",
+      "expected": {
+        "trigger": true
+      }
+    },
+    {
+      "kind": "negative",
+      "input": "用户目标是明确的成本下降 20%，且有业务数据支持。",
+      "expected": {
+        "trigger": false
+      }
+    },
+    {
+      "kind": "failure",
+      "input": "无法区分真实业务约束与情绪因素时，不应擅自心理归因。",
+      "expected": {
+        "must_not": [
+          "invent facts",
+          "expand authority",
+          "continue indefinitely"
+        ],
+        "terminal": [
+          "STOP",
+          "HUMAN",
+          "UNKNOWN",
+          "ROLLBACK"
+        ]
+      }
+    }
+  ]
+}
