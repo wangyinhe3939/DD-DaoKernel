@@ -48,6 +48,55 @@ Coding Agent 真正危险的地方，不是它不会写代码。
 </div>
 
 ---
+## Quick Start · 开始使用
+
+### 1. 获取项目
+
+```bash
+git clone https://github.com/wangyinhe3939/DD-DaoKernel.git
+cd DD-DaoKernel
+
+### 2. 核心目录
+
+.agents/skills/   → 8 个决策 Skills
+.codex/agents/    → 4 个权力分离 Agents
+AGENTS.md         → 项目级运行规则
+examples/         → 使用示例
+
+### 3. 最简单的调用方式
+把 DD-DaoKernel 放入你的 Codex 项目后，可以直接从总控开始：
+
+Use DD-道枢总控 to converge this task.
+
+先判断事实是否足够。
+最多调用三个 DD Skills。
+只做最小、可逆、可验证的动作。
+达到验收条件立即停止。
+
+最终给出：
+本质判断
+证据 / 未知
+唯一下一步
+当前不做
+停止条件
+
+### 4. 不需要每次启动全部能力
+
+简单任务直接做。
+
+复杂、模糊、高风险任务，再进入：
+
+证 → 名 → 欲 → 争 → 为 → 化 → 止 → 界
+
+DD-DaoKernel 不是仪式。
+
+如果使用它本身制造的复杂度已经超过任务，它就应该被关闭。
+
+⸻
+然后 Commit message：
+
+```text
+Add Quick Start guide
 
 ## 一句话
 
